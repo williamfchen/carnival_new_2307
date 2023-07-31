@@ -16,12 +16,11 @@ class Ride
   def board_rider(rider)
     if rider.tall_enough?(@min_height) && rider.preferences.include?(@excitement) && rider.spending_money >= @admission_fee
       rider.spending_money -= @admission_fee
-      @rider_log[rider] = @rider_log[rider].to_i + 1
+      @rider_log[rider] = @rider_log[rider].to_i + @admission_fee
     end
   end
   
   def total_revenue
     @rider_log.values.reduce(0, :+)
   end
-  
 end
